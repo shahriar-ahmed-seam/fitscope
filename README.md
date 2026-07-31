@@ -13,13 +13,14 @@ the evidence shown next to it — then scores document mechanics separately.
 
 | | Live |
 | --- | --- |
+| **Web app** | **https://fitscope.vercel.app** |
 | API | https://fitscope-api-xmdy.onrender.com |
 | Interactive docs | https://fitscope-api-xmdy.onrender.com/docs |
 | Scoring weights | https://fitscope-api-xmdy.onrender.com/api/v1/scoring |
-| Web app | _pending Vercel deploy_ |
 
-> The API runs on Render's free tier and sleeps when idle, so the first request after a
-> quiet period pays a cold start.
+> The API runs on Render's free tier and sleeps when idle, so the first analysis after a
+> quiet period pays a cold start. A warm full-pipeline run takes about 16 s; repeat runs of
+> the same pair are served from cache in under a second.
 
 ---
 
@@ -210,21 +211,24 @@ allowed by regex). `PUBLIC_BASE_URL` is the frontend base used to build share li
 own schema, including the `vector` extension, on first boot. Pooled connections are
 health-checked and retired early because Neon suspends idle compute and drops connections.
 
-**Web app → Vercel.**
+**Web app → Vercel.** `frontend/vercel.json` pins the framework, build and region.
 
 ```bash
 cd frontend
-vercel link                                            # root directory: frontend
-vercel env add NEXT_PUBLIC_API_BASE_URL production      # https://your-api.onrender.com
-vercel --prod
+vercel link --yes --project fitscope
+vercel env add NEXT_PUBLIC_API_BASE_URL production   # https://your-api.onrender.com
+vercel deploy --prod --yes
 ```
 
-Then point the API back at the deployed frontend so share links resolve:
+Then point the API back at the deployed frontend so share links resolve and CORS passes:
 
 ```
 PUBLIC_BASE_URL=https://your-app.vercel.app
 ALLOWED_ORIGINS=https://your-app.vercel.app
 ```
+
+`vercel link` rewrites `frontend/.env.local` and drops a short-lived `VERCEL_OIDC_TOKEN`
+into it. Both that file and `.vercel/` are gitignored — keep it that way.
 
 ## Repository layout
 

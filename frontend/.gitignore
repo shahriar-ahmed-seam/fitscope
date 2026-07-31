@@ -1,0 +1,4 @@
+# Vercel CLI writes project linkage and a short-lived OIDC token here.
+.vercel
+.env*
+!.env.local.example
