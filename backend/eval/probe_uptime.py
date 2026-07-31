@@ -38,7 +38,7 @@ def main() -> None:
                 total += 1
                 try:
                     response = client.get(BASE + path)
-                except Exception as exc:  # noqa: BLE001
+                except Exception as exc:
                     failures[f"{path} {type(exc).__name__}"] += 1
                     continue
                 if response.status_code != 200:
