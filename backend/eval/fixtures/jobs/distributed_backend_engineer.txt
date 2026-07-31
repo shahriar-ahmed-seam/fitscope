@@ -1,0 +1,25 @@
+Job Title: Senior Backend Engineer, Platform
+Company: Meridian Ledger
+Location: Hybrid, Singapore
+
+What you will do
+- Own the design of event-driven services that move money reliably at high throughput.
+- Break remaining monolith modules into independently deployable services.
+- Drive latency and reliability work, including capacity planning and load testing.
+- Participate in the on-call rotation and lead incident reviews.
+- Improve our CI/CD pipeline and deployment safety.
+
+Requirements
+- 5+ years building backend services in Go, Java or Python.
+- Strong experience with message brokers such as Kafka or RabbitMQ.
+- Deep knowledge of PostgreSQL, including query tuning and connection pooling.
+- Production experience with Kubernetes and infrastructure as code.
+- Experience designing gRPC or REST APIs consumed by multiple teams.
+- Demonstrated ownership of production reliability, including on-call and postmortems.
+- Familiarity with authentication and authorization patterns such as OAuth2 and RBAC.
+
+Nice to have
+- Payments or fintech domain experience.
+- Redis or another caching layer at scale.
+- Observability tooling: Prometheus, Grafana, distributed tracing.
+- AWS certification.

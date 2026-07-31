@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+eval/results.json
+eval_out.txt
+eval_err.txt
+.pytest_cache/
+.ruff_cache/

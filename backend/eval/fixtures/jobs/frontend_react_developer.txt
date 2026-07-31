@@ -1,0 +1,27 @@
+Job Title: Frontend Developer (React)
+Company: Kolpo Studio
+Location: Dhaka, on-site
+
+The role
+Join a 6-person product team building dashboards and marketing sites for our clients. You will work
+closely with designers and ship user-facing features every sprint.
+
+Requirements
+- 1-3 years of frontend experience, internships count.
+- Solid JavaScript fundamentals plus React.
+- Comfortable with HTML and modern CSS, including responsive layouts.
+- Experience with Tailwind CSS or another utility-first framework.
+- Familiarity with Git-based team workflows.
+- Able to translate Figma designs into working interfaces.
+
+Nice to have
+- Next.js and server-side rendering.
+- TypeScript.
+- Basic testing with Jest or Playwright.
+- Animation work with Framer Motion.
+
+Responsibilities
+- Build and maintain responsive React components against design specs.
+- Fix layout and accessibility issues reported by clients.
+- Collaborate with backend engineers on REST API integration.
+- Take part in sprint planning and code review.

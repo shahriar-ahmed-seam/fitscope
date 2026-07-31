@@ -1,0 +1,38 @@
+# Secrets
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/
+backend/eval/results.json
+backend/eval/ci-results.json
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Local logs from tooling
+*.log
+backend/ev.log
+backend/ruff*.log
+backend/eval_out.txt
+backend/eval_err.txt
+frontend/install.log
+frontend/audit.log
+frontend/tsc.log
+frontend/build.log
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

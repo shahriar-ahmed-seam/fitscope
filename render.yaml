@@ -1,0 +1,42 @@
+# Render blueprint for the FitScope API.
+#
+# Secrets are marked sync: false so they are set in the Render dashboard (or via
+# the API) rather than committed here.
+services:
+  - type: web
+    name: fitscope-api
+    runtime: docker
+    plan: free
+    region: singapore
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: DEEPSEEK_MODEL
+        value: deepseek-chat
+      - key: VOYAGE_API_KEY
+        sync: false
+      - key: VOYAGE_EMBED_MODEL
+        value: voyage-3.5-lite
+      - key: VOYAGE_RERANK_MODEL
+        value: rerank-2.5-lite
+      # Voyage caps unpaid keys at 3 RPM; raise this once billing is enabled.
+      - key: VOYAGE_REQUESTS_PER_MINUTE
+        value: "3"
+      - key: VOYAGE_RERANK_ENABLED
+        value: "false"
+      - key: DATABASE_URL
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: RATE_LIMIT_PER_DAY
+        value: "25"
+      - key: API_KEYS
+        sync: false

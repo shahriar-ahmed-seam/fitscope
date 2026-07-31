@@ -1,0 +1,35 @@
+TANVIR HOSSAIN
+tanvir.hossain@example.com | +880 1911 998877 | github.com/tanvirh
+
+SUMMARY
+Backend engineer with 6 years on distributed systems and payment infrastructure. Comfortable owning
+service design, on-call and performance work.
+
+EXPERIENCE
+Senior Backend Engineer, Payra Pay — 05/2022 - Present
+- Designed an event-driven payments pipeline on Kafka processing 9,000 transactions per second with
+  zero data loss during broker failover drills.
+- Split a Django monolith into 7 Go microservices communicating over gRPC, cutting p99 latency 41%.
+- Introduced Redis caching and connection pooling that removed 62% of Postgres read load.
+- Led incident response for 14 production incidents and wrote the runbooks now used by the team.
+- Set up CI/CD with GitHub Actions and Argo CD, taking deploys from weekly to 20 per day.
+
+Backend Engineer, Trikon Software — 08/2019 - 04/2022
+- Built REST and GraphQL APIs in Node.js and TypeScript serving 2.1M monthly active users.
+- Migrated 400GB of MySQL data to Postgres with under 8 minutes of downtime.
+- Added OAuth2 and RBAC across 5 internal services, closing 23 findings from a security audit.
+- Wrote load tests in k6 that caught a connection leak before a Black Friday launch.
+
+Software Engineer, Bindu IT — 06/2018 - 07/2019
+- Maintained a PHP and MySQL logistics platform used by 300 daily operators.
+- Automated nightly reconciliation jobs, eliminating 6 hours of manual work per week.
+
+SKILLS
+Go, Python, TypeScript, Node.js, Django, gRPC, REST, GraphQL, Kafka, RabbitMQ, Redis, PostgreSQL,
+MySQL, Docker, Kubernetes, Helm, Terraform, Argo CD, Prometheus, Grafana, AWS, Linux, k6
+
+EDUCATION
+B.Sc. in Software Engineering, University of Dhaka — 2014 - 2018
+
+CERTIFICATIONS
+AWS Certified Solutions Architect - Associate, 2023

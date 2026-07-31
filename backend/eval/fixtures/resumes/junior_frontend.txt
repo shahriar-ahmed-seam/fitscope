@@ -1,0 +1,31 @@
+NUSRAT JAHAN
+nusrat.jahan@example.com | github.com/nusratj
+
+OBJECTIVE
+Recent graduate looking for a frontend developer role where I can grow my React skills.
+
+EXPERIENCE
+Frontend Intern, Alor Path Digital — 06/2024 - 12/2024
+- Worked on the marketing website using React and Tailwind CSS.
+- Helped the team fix responsive layout issues reported by users.
+- Was responsible for updating content pages every week.
+- Participated in daily standups and sprint planning with the product team.
+
+Freelance Web Developer — 01/2024 - 05/2024
+- Built 3 small business websites with Next.js and deployed them on Vercel.
+- Used Figma designs to create page layouts.
+
+PROJECTS
+- Movie search app in React with a public API and client-side filtering.
+- Personal portfolio built with Next.js and Framer Motion animations.
+- Class project: a to-do app with local storage persistence.
+
+SKILLS
+HTML, CSS, JavaScript, React, Next.js, Tailwind CSS, Git, Figma, basic Node.js
+
+EDUCATION
+B.Sc. in Computer Science and Engineering, North South University — 2020 - 2024
+CGPA 3.42
+
+LANGUAGES
+Bangla (native), English (fluent)

@@ -1,0 +1,29 @@
+[project]
+name = "fitscope-api"
+version = "1.0.0"
+description = "Resume to job-description fit intelligence API"
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 110
+# Deliberately 3.10 so lint fixes stay compatible with the oldest supported
+# interpreter (the container runs 3.11).
+target-version = "py310"
+extend-exclude = [".venv", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "RUF"]
+ignore = [
+    "B008",   # FastAPI dependency defaults in signatures are idiomatic
+    "RUF001", # curly quotes in user-facing copy are intentional
+    "RUF002",
+    "RUF003",
+    "SIM108", # explicit if/else is clearer than ternaries in scoring code
+]
+
+[tool.ruff.lint.per-file-ignores]
+"eval/run_eval.py" = ["E402"]  # settings are patched before app imports on purpose
+# Prompt templates are literal text: rewrapping them would change what the model reads.
+"app/services/jd.py" = ["E501"]
+"app/services/judge.py" = ["E501"]
+"app/services/suggest.py" = ["E501"]

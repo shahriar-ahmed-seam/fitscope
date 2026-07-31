@@ -1,0 +1,30 @@
+Job Title: LLM Platform Engineer
+Company: Northwind Intelligence
+Location: Remote (Asia timezones)
+
+About the role
+You will own the retrieval and serving layer behind our customer-facing AI assistant, from
+ingestion pipelines through to production monitoring.
+
+Requirements
+- 4+ years of professional software engineering experience, at least 2 with machine learning in production.
+- Strong Python, including async services with FastAPI or a comparable framework.
+- Hands-on experience building retrieval-augmented generation systems: chunking, embeddings,
+  vector search and reranking.
+- Experience with a vector store such as pgvector, Qdrant or Pinecone.
+- Production experience with Docker and Kubernetes.
+- Demonstrated ability to evaluate model quality with an offline evaluation harness, not vibes.
+- Solid SQL and Postgres.
+
+Nice to have
+- Experience fine-tuning open-weight models with LoRA or QLoRA.
+- Familiarity with Prometheus and Grafana for latency and cost dashboards.
+- Contributions to open-source ML tooling.
+- Experience with Kafka or another streaming platform.
+
+Responsibilities
+- Design and ship the document ingestion and embedding pipeline.
+- Reduce p95 answer latency while holding answer quality steady.
+- Build cost and token accounting into the serving path.
+- Run load tests and capacity planning ahead of enterprise rollouts.
+- Mentor two junior engineers and review their pull requests.

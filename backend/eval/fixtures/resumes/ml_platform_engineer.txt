@@ -1,0 +1,38 @@
+RIYA CHOWDHURY
+riya.chowdhury@example.com | +880 1712 345678 | github.com/riyacd | linkedin.com/in/riyacd
+Dhaka, Bangladesh
+
+SUMMARY
+Machine learning engineer with 5 years building and operating LLM-backed services in production.
+Owns systems end to end: retrieval pipelines, model serving, deployment and monitoring.
+
+EXPERIENCE
+Senior ML Engineer, Bracket AI — 03/2023 - Present
+- Built a retrieval-augmented answering service over 4.2M internal documents using pgvector and a
+  cross-encoder reranker, lifting answer relevance from 61% to 84% on a 500-question eval set.
+- Cut p95 response latency from 3.4s to 900ms by adding embedding caching and batching in FastAPI.
+- Deployed inference workloads on Kubernetes with autoscaling from 2 to 18 pods under load tests.
+- Instrumented token and cost accounting in Prometheus and Grafana, reducing monthly spend 38%.
+- Fine-tuned a Mistral 7B model with QLoRA for support-ticket routing, improving accuracy 71% to 88%.
+
+ML Engineer, Shomoy Analytics — 07/2021 - 02/2023
+- Shipped a churn model in PyTorch and scikit-learn serving 120k daily predictions at p99 under 60ms.
+- Built Airflow ETL pipelines over Postgres and BigQuery feeding a 90-feature training set.
+- Automated retraining with GitHub Actions and MLflow, cutting release time from 5 days to 4 hours.
+- Wrote the evaluation harness the team still uses for offline model comparison.
+
+Junior Data Scientist, Nodi Labs — 01/2020 - 06/2021
+- Delivered demand forecasts for 40 retail outlets, reducing stockouts 22%.
+- Automated weekly reporting in Python and Plotly, saving roughly 12 analyst hours per week.
+
+PROJECTS
+- Open-source RAG evaluation toolkit measuring faithfulness and latency across 6 chunking strategies;
+  340 GitHub stars.
+- Bangla text classification models published on Hugging Face with 11k downloads.
+
+SKILLS
+Python, PyTorch, scikit-learn, FastAPI, LangChain, pgvector, Qdrant, Docker, Kubernetes, Terraform,
+GitHub Actions, Prometheus, Grafana, MLflow, Postgres, Redis, Kafka, AWS, SQL, Git
+
+EDUCATION
+B.Sc. in Computer Science, BUET — 2015 - 2019

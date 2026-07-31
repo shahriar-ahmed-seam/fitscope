@@ -1,0 +1,28 @@
+{
+  "notes": [
+    "human_fit is a 0-100 judgement made by reading each resume against each job description",
+    "and asking: how likely is a competent technical recruiter to advance this candidate?",
+    "Labels were assigned before any model output was inspected, so the correlation reported by",
+    "run_eval.py is not fitted to the scoring weights."
+  ],
+  "scale": {
+    "85-100": "clear interview, hits nearly every must-have",
+    "60-84": "plausible interview with reservations",
+    "35-59": "adjacent skill set, would need a strong hiring market",
+    "0-34": "wrong role or wrong field"
+  },
+  "pairs": [
+    { "id": "p01", "resume": "ml_platform_engineer", "job": "llm_platform_engineer", "human_fit": 95 },
+    { "id": "p02", "resume": "ml_platform_engineer", "job": "distributed_backend_engineer", "human_fit": 58 },
+    { "id": "p03", "resume": "ml_platform_engineer", "job": "frontend_react_developer", "human_fit": 18 },
+    { "id": "p04", "resume": "ml_platform_engineer", "job": "clinical_research_coordinator", "human_fit": 4 },
+    { "id": "p05", "resume": "backend_engineer", "job": "llm_platform_engineer", "human_fit": 52 },
+    { "id": "p06", "resume": "backend_engineer", "job": "distributed_backend_engineer", "human_fit": 93 },
+    { "id": "p07", "resume": "backend_engineer", "job": "frontend_react_developer", "human_fit": 26 },
+    { "id": "p08", "resume": "backend_engineer", "job": "clinical_research_coordinator", "human_fit": 4 },
+    { "id": "p09", "resume": "junior_frontend", "job": "llm_platform_engineer", "human_fit": 6 },
+    { "id": "p10", "resume": "junior_frontend", "job": "distributed_backend_engineer", "human_fit": 5 },
+    { "id": "p11", "resume": "junior_frontend", "job": "frontend_react_developer", "human_fit": 80 },
+    { "id": "p12", "resume": "junior_frontend", "job": "clinical_research_coordinator", "human_fit": 3 }
+  ]
+}
