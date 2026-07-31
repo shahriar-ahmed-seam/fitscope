@@ -13,8 +13,13 @@ the evidence shown next to it — then scores document mechanics separately.
 
 | | Live |
 | --- | --- |
-| Web app | _add Vercel URL_ |
-| API docs | _add Render URL_`/docs` |
+| API | https://fitscope-api-xmdy.onrender.com |
+| Interactive docs | https://fitscope-api-xmdy.onrender.com/docs |
+| Scoring weights | https://fitscope-api-xmdy.onrender.com/api/v1/scoring |
+| Web app | _pending Vercel deploy_ |
+
+> The API runs on Render's free tier and sleeps when idle, so the first request after a
+> quiet period pays a cold start.
 
 ---
 
@@ -190,23 +195,36 @@ needs the selector event loop, which `run_dev.py` installs before the loop is cr
 
 ## Deploy
 
-**API → Render** (blueprint included):
+**API → Render.** `render.yaml` is a complete blueprint: Docker runtime, free plan,
+`/health` as the health check, `rootDir: backend`, auto-deploy on push to `main`. Secrets
+are declared `sync: false`, so set these in the dashboard (or via the API):
 
-```bash
-# Render reads render.yaml; set the secret env vars in the dashboard:
-#   DEEPSEEK_API_KEY, VOYAGE_API_KEY, DATABASE_URL, PUBLIC_BASE_URL, ALLOWED_ORIGINS
+```
+DEEPSEEK_API_KEY   VOYAGE_API_KEY   DATABASE_URL   PUBLIC_BASE_URL   ALLOWED_ORIGINS
 ```
 
-`ALLOWED_ORIGINS` must include your frontend origin. `PUBLIC_BASE_URL` is the frontend
-base used to build share links.
+`ALLOWED_ORIGINS` must include your frontend origin (`*.vercel.app` is additionally
+allowed by regex). `PUBLIC_BASE_URL` is the frontend base used to build share links.
 
-**Database → Neon**: create a project; the API creates its own schema (including the
-`vector` extension) on first boot. Pooled connections are health-checked and retired
-early, because Neon suspends idle compute and drops connections.
+**Database → Neon.** Create a project and paste the connection string. The API creates its
+own schema, including the `vector` extension, on first boot. Pooled connections are
+health-checked and retired early because Neon suspends idle compute and drops connections.
 
-**Web app → Vercel**: set root directory to `frontend`, add
-`NEXT_PUBLIC_API_BASE_URL=https://your-api.onrender.com`. The free Render tier sleeps when
-idle, so the first analysis after a quiet period pays a cold start.
+**Web app → Vercel.**
+
+```bash
+cd frontend
+vercel link                                            # root directory: frontend
+vercel env add NEXT_PUBLIC_API_BASE_URL production      # https://your-api.onrender.com
+vercel --prod
+```
+
+Then point the API back at the deployed frontend so share links resolve:
+
+```
+PUBLIC_BASE_URL=https://your-app.vercel.app
+ALLOWED_ORIGINS=https://your-app.vercel.app
+```
 
 ## Repository layout
 
