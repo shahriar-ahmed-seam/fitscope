@@ -12,33 +12,63 @@ from ..services import llm, retrieval
 router = APIRouter(tags=["meta"])
 
 
+def _capabilities(database_ok: bool) -> dict:
+    return {
+        "llm": llm.configured(),
+        "embeddings": retrieval.configured(),
+        "coverage_judge": settings.judge_enabled and llm.configured(),
+        "reranker": retrieval.rerank_available(),
+        "database": database_ok,
+        "shareable_reports": database_ok,
+    }
+
+
+def _models() -> dict:
+    return {
+        "llm": settings.deepseek_model if llm.configured() else None,
+        "embeddings": settings.voyage_embed_model if retrieval.configured() else "lexical-idf",
+        "reranker": settings.voyage_rerank_model if retrieval.rerank_available() else None,
+    }
+
+
 @router.get("/health")
 async def health() -> dict:
-    """Liveness plus which capabilities are actually wired up."""
-    database_ok = False
-    if db.enabled():
-        try:
-            await db.fetch_one("SELECT 1 AS ok")
-            database_ok = True
-        except Exception:
-            database_ok = False
+    """Liveness. Deliberately performs no I/O.
+
+    Platform health checks hit this endpoint, so it must not depend on an external
+    service: a cold serverless database would otherwise make the instance look
+    unhealthy and get pulled out of rotation. Capability flags here report what is
+    *configured*; call /readyz to confirm the database actually answers.
+    """
     return {
         "status": "ok",
         "version": settings.app_version,
         "environment": settings.app_env,
-        "capabilities": {
-            "llm": llm.configured(),
-            "embeddings": retrieval.configured(),
-            "coverage_judge": settings.judge_enabled and llm.configured(),
-            "reranker": retrieval.rerank_available(),
-            "database": database_ok,
-            "shareable_reports": database_ok,
-        },
-        "models": {
-            "llm": settings.deepseek_model if llm.configured() else None,
-            "embeddings": settings.voyage_embed_model if retrieval.configured() else "lexical-idf",
-            "reranker": settings.voyage_rerank_model if retrieval.rerank_available() else None,
-        },
+        "capabilities": _capabilities(db.enabled()),
+        "models": _models(),
+    }
+
+
+@router.get("/readyz")
+async def readiness() -> dict:
+    """Readiness: verifies the database responds. Not used for liveness."""
+    database_ok = False
+    detail: str | None = None
+    if db.enabled():
+        try:
+            await db.fetch_one("SELECT 1 AS ok")
+            database_ok = True
+        except Exception as exc:
+            detail = str(exc)[:200]
+    else:
+        detail = "DATABASE_URL not configured; running stateless"
+
+    return {
+        "status": "ready" if (database_ok or not db.enabled()) else "degraded",
+        "database": database_ok,
+        "detail": detail,
+        "capabilities": _capabilities(database_ok),
+        "models": _models(),
     }
 
 

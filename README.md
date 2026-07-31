@@ -135,7 +135,13 @@ Interactive docs at `/docs`, OpenAPI at `/openapi.json`.
 | `GET` | `/api/v1/scoring` | Live weights and thresholds |
 | `GET` | `/api/v1/quota` | Remaining free runs for the caller |
 | `GET` | `/api/v1/metrics` | Provider usage, tokens, latency percentiles |
-| `GET` | `/health` | Liveness plus which capabilities are wired up |
+| `GET` | `/health` | Liveness, no I/O — safe for platform health checks |
+| `GET` | `/readyz` | Readiness: confirms the database actually answers |
+
+`/health` performs no I/O on purpose. Pointing a platform health check at an endpoint
+that queries a serverless database means a cold start looks like an outage, the instance
+gets pulled from rotation, and traffic sees intermittent `no-server` 404s — which is
+exactly what happened on the first deploy of this service.
 
 ```bash
 curl -X POST https://YOUR-API/api/v1/analyze \
